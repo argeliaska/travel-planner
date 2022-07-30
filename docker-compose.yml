@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  travel-planner-api:
+    env_file:
+      - .env
+    image: travel-planner-api:0.1.0
+    build: .
+    container_name: travel-planner-api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/code/app
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '1m'
+        max-file: '50'
