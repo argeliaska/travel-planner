@@ -29,9 +29,7 @@ services:
       - db_data:/data/db
     networks:
       - travel-back-net
-    logging:
-      driver: none
-  
+
 volumes:
   db_data:
 
