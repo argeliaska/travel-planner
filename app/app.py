@@ -28,7 +28,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
     )
 
 
-@app.get('/health-check')
+@app.get('/health-check', tags=['DEFAULT'])
 def health_check():
     return {'message': 'FastAPI it\'s working'}
 
