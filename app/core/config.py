@@ -21,5 +21,7 @@ class Settings(BaseSettings):
     DEFAULT_DEPARTURE_LON: float = config('DEFAULT_DEPARTURE_LON')
     DEFAULT_ARRIVAL_LAT: float = config('DEFAULT_ARRIVAL_LAT')
     DEFAULT_ARRIVAL_LON: float = config('DEFAULT_ARRIVAL_LON')
+    DEFAULT_USER_EMAIL: str = config('DEFAULT_ARRIVAL_LON')
+    MAX_DAYS_TRIP: int = config('MAX_DAYS_TRIP', cast=int)
 
 settings = Settings()

@@ -36,7 +36,7 @@ async def http_exception_handler(request: Request, exc: HTTPException):
 async def start_db_client():
     try:
         mongo_conn = f'{settings.MONGO_URI}/travels'
-        db_client = AsyncIOMotorClient(settings.MONGO_URI, serverSelectionTimeoutMS=10).travels
+        db_client = AsyncIOMotorClient(settings.MONGO_URI).travels # , serverSelectionTimeoutMS=10
         await init_beanie(
             database=db_client,
             document_models=[

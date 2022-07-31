@@ -38,8 +38,11 @@ class GeoService():
         params = {'lat': lat, 'lon': lon}
         params.update(settings.OPEN_WEATHER_APIKEY_PARAM)
         resp = get_response(url, params)
+        
         if resp:
-            result = CityGeoRevOutSchema(**resp)
+            city = resp[0]
+
+            result = CityGeoRevOutSchema(**city)
         else:
             raise HTTPException(
                 status_code=HTTPStatus.NOT_FOUND,
