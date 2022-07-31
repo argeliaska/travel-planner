@@ -4,8 +4,8 @@ from decouple import config
 APP_DESC = 'This personal travel planner will help you scheduler '\
            'your travel by showing the weather for departure and return date. <br/>'\
            '<br/>API USAGE TIPS:'\
-                '<ul><li>For country ISO codes use the endpoint info under GEO</li>'\
-                '<li>For country or city latitude - longitud use the endpoint info_rev under GEO</li></ul>'
+                '<ul><li>To get latitud and longitud of a city, use the endpoint info under GEO</li>'\
+                '</ul>'
 
 class Settings(BaseSettings):
     API_V1: str = '/api/v1'
