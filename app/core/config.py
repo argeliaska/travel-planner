@@ -16,5 +16,9 @@ class Settings(BaseSettings):
     GEO_REV_API_URL: str = config('GEO_REV_API_URL')
     OPEN_WEATHER_APIKEY_PARAM: dict = {'appid' : OPEN_WEATHER_APIKEY}
     CITIES_GEO_INFO_LIMIT: dict = {'limit' : 5}
+    DEFAULT_DEPARTURE_LAT: float = config('DEFAULT_DEPARTURE_LAT')
+    DEFAULT_DEPARTURE_LON: float = config('DEFAULT_DEPARTURE_LON')
+    DEFAULT_ARRIVAL_LAT: float = config('DEFAULT_ARRIVAL_LAT')
+    DEFAULT_ARRIVAL_LON: float = config('DEFAULT_ARRIVAL_LON')
 
 settings = Settings()
