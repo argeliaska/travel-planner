@@ -11,8 +11,29 @@ services:
       - 8000:8000
     volumes:
       - ./app:/code/app
+    networks:
+      - travel-back-net
     logging:
       driver: 'json-file'
       options:
         max-size: '1m'
         max-file: '50'
+  
+  travel-planner-db:
+    image: mongo:5.0.9
+    container_name: travel-planner-db
+    ports:
+      - 27019:27017
+    command: mongod --quiet --logpath /dev/null
+    volumes:
+      - db_data:/data/db
+    networks:
+      - travel-back-net
+    logging:
+      driver: none
+  
+volumes:
+  db_data:
+
+networks:
+  travel-back-net:

@@ -5,6 +5,11 @@ from fastapi.exceptions import HTTPException
 from fastapi.encoders import jsonable_encoder
 from app.core.config import settings
 from app.api.api_v1.router import router
+from motor.motor_asyncio import AsyncIOMotorClient
+from beanie import init_beanie
+import logging
+from app.models.user_model import User
+from app.models.travel_model import Travel
 
 app = FastAPI(
     title='Personal Travel Planner',
@@ -26,6 +31,21 @@ async def http_exception_handler(request: Request, exc: HTTPException):
         status_code=exc.status_code,
         content=jsonable_encoder({'detail':exc})
     )
+
+@app.on_event("startup")
+async def start_db_client():
+    try:
+        mongo_conn = f'{settings.MONGO_URI}/travels'
+        db_client = AsyncIOMotorClient(settings.MONGO_URI, serverSelectionTimeoutMS=10).travels
+        await init_beanie(
+            database=db_client,
+            document_models=[
+                User,
+                Travel,
+            ]
+        )
+    except Exception as exc:
+        logging.error(f'Unable to connect to database {settings.MONGO_URI} {exc}')
 
 
 @app.get('/health-check', tags=['DEFAULT'])

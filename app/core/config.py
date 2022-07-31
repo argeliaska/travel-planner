@@ -10,6 +10,7 @@ APP_DESC = 'This personal travel planner will help you scheduler '\
 class Settings(BaseSettings):
     API_V1: str = '/api/v1'
     APP_DESCRIPTION: str = APP_DESC
+    MONGO_URI: str = config("MONGO_URI")
     OPEN_WEATHER_APIKEY: str =  config('OPEN_WEATHER_APIKEY')
     WEATHER_API_URL: str = config('WEATHER_API_URL')
     GEO_API_URL: str = config('GEO_API_URL')
